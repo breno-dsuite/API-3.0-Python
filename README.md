@@ -642,8 +642,8 @@ Exemplo de retorno quando usado o AF
 """
 
 #variaveis de teste
-MerchantID = '67e4aae9-319b-47e3-b82f-6f9661e46c71'
-MerchantKey = 'TWRPQPRMWEECCFRQMHSPBIDOTWKLDRNRJKAPPRMT'
+MerchantID = ''
+MerchantKey = ''
 fraud_analysis = False
 
 order = '123'
