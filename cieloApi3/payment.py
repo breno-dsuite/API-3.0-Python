@@ -47,6 +47,7 @@ class Payment(ObjectJSON):
         self.bar_code_number = None
         self.digitable_line = None
         self.address = None
+        self.fraud_analysis = None
 
         #Boleto
         self.boleto_number = None
@@ -55,8 +56,17 @@ class Payment(ObjectJSON):
         self.identification = None
         self.instructions = None
 
-
     def prepare(self):
 
         if self.credit_card:
             self.type = PAYMENTTYPE_CREDITCARD
+
+    def update(self, r):
+        if r.get('Status'):
+            self.status = r.get('Status')
+        if r.get('ReturnCode'):
+            self.return_code = r.get('ReturnCode')
+        if r.get('ProofOfSale'):
+            self.proof_of_sale = r.get('ProofOfSale')
+        if r.get('ReturnMessage'):
+            self.return_message = r.get('ReturnMessage')
