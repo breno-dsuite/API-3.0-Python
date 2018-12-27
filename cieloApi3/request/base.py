@@ -46,11 +46,19 @@ class Base(object):
         if response.status_code >= 400:
             errors = []
 
-            for answer in answers:
-                errors.append('\r\n * [%s] %s\r\n' % (answer['Code'], answer['Message']))
+            if 'dict' in str(type(answers)):
+                errors.append('\r\n * %s\r\n' % answer['Message'])
+                data_send = json.loads(body or 'null')
 
-            data_send = json.loads(body or 'null')
+                raise Exception, '\r\n%s\r\nMethod: %s\r\nUri: %s\r\nData: %s' % (''.join(errors), method, response.url, json.dumps(data_send, indent=2))
 
-            raise Exception, '\r\n%s\r\nMethod: %s\r\nUri: %s\r\nData: %s' % (''.join(errors), method, response.url, json.dumps(data_send, indent=2))
+            else:
+                for answer in answers:
+                    errors.append('\r\n * [%s] %s\r\n' % (answer['Code'], answer['Message']))
+
+                data_send = json.loads(body or 'null')
+
+                raise Exception, '\r\n%s\r\nMethod: %s\r\nUri: %s\r\nData: %s' % (''.join(errors), method, response.url, json.dumps(data_send, indent=2))
+
 
         return answers
