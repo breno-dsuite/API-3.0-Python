@@ -373,9 +373,9 @@ def create_token_card():
 
     # Criar a venda e imprime o retorno
     response_create_card_token = cielo_ecommerce.create_card_token(credit_card)
-    print '----------------------response_create_card_token----------------------'
-    print json.dumps(response_create_card_token, indent=2)
-    print '----------------------response_create_card_token----------------------'
+    print('----------------------response_create_card_token----------------------')
+    print(json.dumps(response_create_card_token, indent=2))
+    print('----------------------response_create_card_token----------------------')
 
     # Com o cartão gerado token na Cielo, já temos o Token do cartão para uma futura cobrança
     new_card_token = credit_card.card_token
@@ -399,9 +399,9 @@ def authorizate_payment(token,ccv,brand,fraud_analysis):
     # Criar a venda e imprime o retorno
     response_create_sale = cielo_ecommerce.create_sale(sale)
 
-    print '----------------------response_create_sale----------------------'
-    print json.dumps(response_create_sale, indent=2)
-    print '----------------------response_create_sale----------------------'
+    print('----------------------response_create_sale----------------------')
+    print(json.dumps(response_create_sale, indent=2))
+    print('----------------------response_create_sale----------------------')
 
     # Com a venda criada na Cielo, já temos o ID do pagamento, TID e demais
     # dados retornados pela Cielo
@@ -416,9 +416,9 @@ def capture_payment(payment):
     cielo_ecommerce = CieloEcommerce(merchant, environment)
     response_capture_sale = cielo_ecommerce.capture_sale(payment.payment_id,payment.amount, 0)
     payment.update(response_capture_sale)
-    print '----------------------response_capture_sale----------------------'
-    print json.dumps(response_capture_sale, indent=2)
-    print '----------------------response_capture_sale----------------------'
+    print('----------------------response_capture_sale----------------------')
+    print(json.dumps(response_capture_sale, indent=2))
+    print('----------------------response_capture_sale----------------------')
 
 def cancel_payment(payment):
     # E também podemos fazer seu cancelamento, se for o caso
@@ -426,9 +426,9 @@ def cancel_payment(payment):
     merchant = Merchant(MerchantID, MerchantKey)
     cielo_ecommerce = CieloEcommerce(merchant, environment)
     response_cancel_sale = cielo_ecommerce.cancel_sale(payment.payment_id, payment.amount)
-    print '---------------------response_cancel_sale---------------------'
-    print json.dumps(response_cancel_sale, indent=2)
-    print '---------------------response_cancel_sale---------------------'
+    print('---------------------response_cancel_sale---------------------')
+    print(json.dumps(response_cancel_sale, indent=2))
+    print('---------------------response_cancel_sale---------------------')
 
 def fills_card():
     credit_card = CreditCard(ccv, brand)
@@ -571,16 +571,16 @@ if payment.return_message == "Operation Successful":
     capture_payment(payment)
     cancel_payment(payment)
 elif payment.return_message == "Not Authorized":
-    print "Transação não autorizada, tente com outro cartão"
+    print("Transação não autorizada, tente com outro cartão")
 elif payment.return_message == "Card Expired":
-    print "Cartão Expirado, tente com outro"
+    print("Cartão Expirado, tente com outro")
 elif payment.return_message == "Blocked Card":
-    print "Cartão Bloqueado, tente com outro"
+    print("Cartão Bloqueado, tente com outro")
 elif payment.return_message == "Timed Out":
-    print "Tempo de conexão excedido, tente novamente"
+    print("Tempo de conexão excedido, tente novamente")
 elif payment.return_message == "Card Canceled":
-    print "Cartão Cancelado, tente com outro"
+    print("Cartão Cancelado, tente com outro")
 elif payment.return_message == "Problems with Creditcard":
-    print "Problemas com o seu cartão de Crédito, tente com outro"
+    print("Problemas com o seu cartão de Crédito, tente com outro")
 else:
-    print "Erro com o Retorno da Integração"
+    print("Erro com o Retorno da Integração")

@@ -47,10 +47,10 @@ class Base(object):
             errors = []
 
             if 'dict' in str(type(answers)):
-                errors.append('\r\n * %s\r\n' % answer['Message'])
+                errors.append('\r\n * %s\r\n' % answers['Message'])
                 data_send = json.loads(body or 'null')
 
-                raise Exception, '\r\n%s\r\nMethod: %s\r\nUri: %s\r\nData: %s' % (''.join(errors), method, response.url, json.dumps(data_send, indent=2))
+                raise Exception('\r\n%s\r\nMethod: %s\r\nUri: %s\r\nData: %s' % (''.join(errors), method, response.url, json.dumps(data_send, indent=2)))
 
             else:
                 for answer in answers:
@@ -58,7 +58,7 @@ class Base(object):
 
                 data_send = json.loads(body or 'null')
 
-                raise Exception, '\r\n%s\r\nMethod: %s\r\nUri: %s\r\nData: %s' % (''.join(errors), method, response.url, json.dumps(data_send, indent=2))
+                raise Exception('\r\n%s\r\nMethod: %s\r\nUri: %s\r\nData: %s' % (''.join(errors), method, response.url, json.dumps(data_send, indent=2)))
 
 
         return answers
