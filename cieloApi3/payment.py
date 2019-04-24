@@ -14,6 +14,7 @@ class Payment(ObjectJSON):
 
     def __init__(self, amount, installments = 1):
 
+        self.type = None
         self.amount = amount
         self.service_tax_amount = None
         self.installments = installments
@@ -22,15 +23,14 @@ class Payment(ObjectJSON):
         self.authenticate = None
         self.recurrent = None
         self.recurrent_payment = None
+        self.soft_descriptor = None
         self.credit_card = None
         self.proof_of_sale = None
         self.authorization_code = None
-        self.soft_descriptor = None
         self.return_url = None
         self.provider = None
         self.payment_id = None
         self.tid = None
-        self.type = None
         self.received_date = None
         self.captured_amount = None
         self.captured_date = None
