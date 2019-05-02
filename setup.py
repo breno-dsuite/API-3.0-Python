@@ -5,7 +5,7 @@ import os
 import sys
 
 try:
-    from setuptools import setup, find_namespace_packages
+    from setuptools import setup, find_packages
 except ImportError:
     from distutils.core import setup
 
@@ -25,7 +25,7 @@ settings.update(
     author_email='thiago.malaca@gmail.com',
     url='https://github.com/thiago-Malaca/API-3.0-Python',
     keywords='api3.0 cielo python sdk ecommerce',
-    packages=find_namespace_packages(),
+    packages=find_packages(),
     install_requires=['requests', 'future'],
     license='MIT',
     classifiers=(
@@ -39,6 +39,7 @@ settings.update(
         'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3.4',
         'Programming Language :: Python :: 3.5',
+        'Programming Language :: Python :: 3.6',
     )
 )
 
