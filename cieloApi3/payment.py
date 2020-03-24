@@ -23,6 +23,7 @@ class Payment(ObjectJSON):
         self.recurrent = None
         self.recurrent_payment = None
         self.credit_card = None
+        self.debit_card = None
         self.proof_of_sale = None
         self.authorization_code = None
         self.soft_descriptor = None
@@ -60,3 +61,5 @@ class Payment(ObjectJSON):
 
         if self.credit_card:
             self.type = PAYMENTTYPE_CREDITCARD
+        if self.debit_card:
+            self.type = PAYMENTTYPE_DEBITCARD
