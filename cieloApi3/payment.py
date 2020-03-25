@@ -56,6 +56,8 @@ class Payment(ObjectJSON):
         self.identification = None
         self.instructions = None
 
+        self.is_crypto_currency_negotiation = None
+
 
     def prepare(self):
 
