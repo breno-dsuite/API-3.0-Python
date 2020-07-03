@@ -9,4 +9,4 @@ class Customer(object):
         self.identity = None
         self.identity_type = None
         self.address = None
-        self.delivery_adress = None
+        self.delivery_address = None
