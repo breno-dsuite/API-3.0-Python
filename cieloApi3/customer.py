@@ -1,4 +1,4 @@
-
+# ecoding=utf-8
 class Customer(object):
 
     def __init__(self, name):
