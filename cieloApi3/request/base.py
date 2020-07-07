@@ -2,6 +2,7 @@ import uuid, json
 
 from requests import Request, Session
 
+
 class Base(object):
 
     def __init__(self, merchant):
